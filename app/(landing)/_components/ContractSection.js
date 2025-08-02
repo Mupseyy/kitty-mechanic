@@ -12,11 +12,9 @@ const ContractSection = () => {
       // Copy the actual contract address, not the display text
       const textToCopy = contractAddress;
 
-      // Check if we have a valid contract address
-      if (!textToCopy || textToCopy === "SOON") {
-        console.warn("Contract address not available yet");
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
+      // If contract address is placeholder, still copy it for testing
+      if (!textToCopy) {
+        console.warn("Contract address not available");
         return;
       }
 
