@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from "react";
+import { contractAddress } from "../../constants";
 
 const ContractSection = () => {
   const [copied, setCopied] = useState(false);
@@ -8,10 +9,8 @@ const ContractSection = () => {
 
   const handleCopy = async () => {
     try {
-      // Get the actual text content from the displayed element
-      const textToCopy = textRef.current
-        ? textRef.current.innerText || textRef.current.textContent
-        : "CA:";
+      // Copy the actual contract address, not the display text
+      const textToCopy = contractAddress;
 
       // Try modern clipboard API first
       if (navigator.clipboard && window.isSecureContext) {
