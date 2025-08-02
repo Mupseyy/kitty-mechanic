@@ -38,7 +38,7 @@ const ContractSection = () => {
         textArea.select();
         textArea.setSelectionRange(0, textToCopy.length);
 
-        copySuccess = document.execCommand('copy');
+        copySuccess = document.execCommand("copy");
         document.body.removeChild(textArea);
       } catch (err) {
         // Continue to next fallback
@@ -58,7 +58,7 @@ const ContractSection = () => {
         input.select();
         input.setSelectionRange(0, textToCopy.length);
 
-        copySuccess = document.execCommand('copy');
+        copySuccess = document.execCommand("copy");
         document.body.removeChild(input);
       } catch (err) {
         // Continue to final fallback
@@ -68,7 +68,10 @@ const ContractSection = () => {
     // Final fallback: Manual copy via prompt
     if (!copySuccess) {
       // Create a modal-like prompt for manual copy
-      const userPrompt = prompt("Copy this contract address (Ctrl+C):", textToCopy);
+      const userPrompt = prompt(
+        "Copy this contract address (Ctrl+C):",
+        textToCopy,
+      );
       copySuccess = true; // Assume user copied it
     }
 
@@ -120,7 +123,10 @@ const ContractSection = () => {
                     <p className="text-green-600 font-semibold">Text Copied!</p>
                   ) : (
                     <p>
-                      <span className="sm:text-[inherit] text-[18px]">CA</span><span className="sm:text-[18px] text-[14px]"><p>CA: SOON</p></span>
+                      <span className="sm:text-[inherit] text-[18px]">CA</span>
+                      <span className="sm:text-[18px] text-[14px]">
+                        <p>CA: SOON</p>
+                      </span>
                     </p>
                   )}
                 </span>

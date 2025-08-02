@@ -144,7 +144,8 @@ const FigmaSection = () => {
                   className="font-luckiest-guy text-[50px] font-normal leading-tight"
                   style={{
                     color: "rgba(255, 255, 255, 1)",
-                    textShadow: "4px 4px 0 #000, 6px 6px 0 #000, 0 4px 0 #000, -2px -2px 0 #000, -2px 2px 0 #000, 2px -2px 0 #000, 2px 2px 0 #000"
+                    textShadow:
+                      "4px 4px 0 #000, 6px 6px 0 #000, 0 4px 0 #000, -2px -2px 0 #000, -2px 2px 0 #000, 2px -2px 0 #000, 2px 2px 0 #000",
                   }}
                 >
                   KITTY THE MECHANIC
