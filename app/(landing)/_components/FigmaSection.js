@@ -74,9 +74,9 @@ const FigmaSection = () => {
 
           {/* Navigation Header */}
           <div className="font-normal relative z-20 pointer-events-auto">
-            <div className="font-normal max-w-6xl w-full pointer-events-auto mx-auto pl-6 pr-[163px] pt-[49px] pb-6">
-              <div className="flex flex-col lg:flex-row items-center font-normal justify-between pointer-events-auto">
-                <div className="flex items-center font-normal gap-3 sm:gap-4 pointer-events-auto">
+            <div className="font-normal max-w-6xl w-full pointer-events-auto mx-auto pl-6 sm:pr-[163px] pr-[44px] pt-[49px] pb-6">
+              <div className="flex flex-col items-center font-normal justify-between pointer-events-auto">
+                <div className="flex items-center font-normal gap-3 sm:justify-start justify-center pointer-events-auto">
                   <img
                     src="https://api.builder.io/api/v1/image/assets/TEMP/8dc1293a36ff825d9439d5380f5d3d7d44c17d0e?width=150"
                     alt="Kitty Logo"
@@ -94,8 +94,8 @@ const FigmaSection = () => {
                   </h1>
                 </div>
 
-                {/* Navigation Menu */}
-                <div className="flex items-center bg-[#DDD6CC] font-normal justify-center pointer-events-auto overflow-hidden ml-[95px] mr-[-2px] px-[18px] py-3 rounded-[40px]">
+                {/* Navigation Menu - Hidden on mobile */}
+                <div className="hidden lg:flex items-center bg-[#DDD6CC] font-normal justify-center pointer-events-auto overflow-hidden ml-[95px] mr-[-2px] px-[18px] py-3 rounded-[40px]">
                   <a
                     href="#about"
                     className="text-black transition-colors font-luckiest-guy text-[16px] sm:text-[20px] lg:text-[22px] font-normal leading-[20px] sm:leading-[28px] px-2 sm:px-4 lg:px-6 py-2 sm:py-3"
@@ -126,16 +126,28 @@ const FigmaSection = () => {
           </div>
 
           {/* Main Content Area */}
-          <div className="flex items-center flex-grow font-normal justify-center relative z-10 pointer-events-auto px-4 sm:px-6">
-            <div className="font-normal max-w-4xl w-full pointer-events-auto flex flex-col mx-auto">
+          <div className="flex items-center flex-grow font-normal justify-center relative z-10 pointer-events-auto px-4 sm:px-6 sm:pb-0 pb-[100px] sm:mb-0 mb-[45px]">
+            <div className="font-normal sm:max-w-4xl max-w-[856px] w-full pointer-events-auto flex flex-col mx-auto">
               {/* Central Image */}
               <div className="flex justify-center mb-8">
                 <img
                   loading="lazy"
                   src="https://cdn.builder.io/api/v1/image/assets%2F6e8fa0e4f9974b6bbde244f74d2d30d6%2Fb42765756e794bc4aebd8c8515a3dad4"
-                  className="aspect-square object-cover object-center w-full min-h-[200px] sm:min-h-[280px] min-w-5 overflow-hidden max-w-[200px] sm:max-w-[280px]"
+                  className="aspect-square object-cover object-center w-full min-h-[200px] sm:min-h-[280px] min-w-5 overflow-hidden max-w-[200px] sm:max-w-[280px] sm:mt-0 mt-[45px]"
                   alt="Kitty Character"
                 />
+              </div>
+
+              {/* KITTY themechanic text */}
+              <div className="relative ml-5 h-auto sm:text-[35px] text-[3px] sm:mt-0 mt-[-4px]">
+                <span
+                  className="text-white font-luckiest-guy text-[35px] sm:text-[35px]"
+                  style={{
+                    fontFamily: '"Luckiest Guy", "Luckiest Guy Fallback", "Luckiest Guy", -apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif'
+                  }}
+                >
+                  KITTY thmechanic
+                </span>
               </div>
 
               {/* Social Media Icons - Mobile Responsive Layout */}
