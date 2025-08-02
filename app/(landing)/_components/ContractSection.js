@@ -8,46 +8,64 @@ const ContractSection = () => {
   const textRef = useRef(null);
 
   const handleCopy = async () => {
-    // Always show feedback first
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    const textToCopy = contractAddress || "SOON";
 
     try {
-      const textToCopy = contractAddress || "SOON";
-
-      // Try multiple methods to ensure it works
-      if (navigator.clipboard && window.isSecureContext) {
+      // Method 1: Modern clipboard API
+      if (navigator.clipboard && navigator.clipboard.writeText) {
         await navigator.clipboard.writeText(textToCopy);
-      } else {
-        // Fallback method
-        const textArea = document.createElement("textarea");
-        textArea.value = textToCopy;
-        textArea.style.position = "fixed";
-        textArea.style.top = "0";
-        textArea.style.left = "0";
-        textArea.style.width = "2em";
-        textArea.style.height = "2em";
-        textArea.style.padding = "0";
-        textArea.style.border = "none";
-        textArea.style.outline = "none";
-        textArea.style.boxShadow = "none";
-        textArea.style.background = "transparent";
-
-        document.body.appendChild(textArea);
-        textArea.focus();
-        textArea.select();
-
-        try {
-          document.execCommand('copy');
-        } catch (err) {
-          console.log('Copy fallback executed');
-        }
-
-        document.body.removeChild(textArea);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+        return;
       }
     } catch (err) {
-      console.log('Copy executed with potential limitations');
+      // If modern API fails, try fallback
     }
+
+    try {
+      // Method 2: Aggressive fallback for restricted environments
+      const textArea = document.createElement("textarea");
+      textArea.value = textToCopy;
+
+      // Make it visible but off-screen
+      textArea.style.position = "absolute";
+      textArea.style.left = "-9999px";
+      textArea.style.top = "0";
+      textArea.style.opacity = "0";
+      textArea.setAttribute("readonly", "");
+      textArea.tabIndex = -1;
+
+      document.body.appendChild(textArea);
+
+      // For iOS
+      const range = document.createRange();
+      range.selectNodeContents(textArea);
+      const selection = window.getSelection();
+      selection.removeAllRanges();
+      selection.addRange(range);
+      textArea.setSelectionRange(0, 999999);
+
+      // Try to copy
+      const successful = document.execCommand('copy');
+      document.body.removeChild(textArea);
+
+      if (successful) {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+      } else {
+        // Last resort: Show modal with text to copy manually
+        showManualCopyModal(textToCopy);
+      }
+    } catch (err) {
+      // Last resort: Show modal with text to copy manually
+      showManualCopyModal(textToCopy);
+    }
+  };
+
+  const showManualCopyModal = (text) => {
+    alert(`Copy this contract address: ${text}`);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   return (
