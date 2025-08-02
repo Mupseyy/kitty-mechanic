@@ -10,62 +10,73 @@ const ContractSection = () => {
   const handleCopy = async () => {
     const textToCopy = contractAddress || "SOON";
 
+    // Method 1: Try all possible copy methods immediately
+    let copySuccess = false;
+
+    // Modern clipboard API
     try {
-      // Method 1: Modern clipboard API
       if (navigator.clipboard && navigator.clipboard.writeText) {
         await navigator.clipboard.writeText(textToCopy);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
-        return;
+        copySuccess = true;
       }
     } catch (err) {
-      // If modern API fails, try fallback
+      // Continue to fallback
     }
 
-    try {
-      // Method 2: Aggressive fallback for restricted environments
-      const textArea = document.createElement("textarea");
-      textArea.value = textToCopy;
+    // Fallback 1: execCommand with textarea
+    if (!copySuccess) {
+      try {
+        const textArea = document.createElement("textarea");
+        textArea.value = textToCopy;
+        textArea.style.position = "fixed";
+        textArea.style.left = "0";
+        textArea.style.top = "0";
+        textArea.style.opacity = "1";
+        textArea.style.zIndex = "9999";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        textArea.setSelectionRange(0, textToCopy.length);
 
-      // Make it visible but off-screen
-      textArea.style.position = "absolute";
-      textArea.style.left = "-9999px";
-      textArea.style.top = "0";
-      textArea.style.opacity = "0";
-      textArea.setAttribute("readonly", "");
-      textArea.tabIndex = -1;
-
-      document.body.appendChild(textArea);
-
-      // For iOS
-      const range = document.createRange();
-      range.selectNodeContents(textArea);
-      const selection = window.getSelection();
-      selection.removeAllRanges();
-      selection.addRange(range);
-      textArea.setSelectionRange(0, 999999);
-
-      // Try to copy
-      const successful = document.execCommand('copy');
-      document.body.removeChild(textArea);
-
-      if (successful) {
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
-      } else {
-        // Last resort: Show modal with text to copy manually
-        showManualCopyModal(textToCopy);
+        copySuccess = document.execCommand('copy');
+        document.body.removeChild(textArea);
+      } catch (err) {
+        // Continue to next fallback
       }
-    } catch (err) {
-      // Last resort: Show modal with text to copy manually
-      showManualCopyModal(textToCopy);
     }
-  };
 
-  const showManualCopyModal = (text) => {
-    alert(`Copy this contract address: ${text}`);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    // Fallback 2: Create input element
+    if (!copySuccess) {
+      try {
+        const input = document.createElement("input");
+        input.value = textToCopy;
+        input.style.position = "fixed";
+        input.style.opacity = "0";
+        input.style.left = "0";
+        input.style.top = "0";
+        document.body.appendChild(input);
+        input.select();
+        input.setSelectionRange(0, textToCopy.length);
+
+        copySuccess = document.execCommand('copy');
+        document.body.removeChild(input);
+      } catch (err) {
+        // Continue to final fallback
+      }
+    }
+
+    // Final fallback: Manual copy via prompt
+    if (!copySuccess) {
+      // Create a modal-like prompt for manual copy
+      const userPrompt = prompt("Copy this contract address (Ctrl+C):", textToCopy);
+      copySuccess = true; // Assume user copied it
+    }
+
+    // Show success feedback
+    if (copySuccess) {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
   };
 
   return (
