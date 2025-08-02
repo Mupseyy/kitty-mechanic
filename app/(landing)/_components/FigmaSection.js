@@ -143,7 +143,7 @@ const FigmaSection = () => {
                 <h2
                   className="font-luckiest-guy text-[50px] font-normal leading-tight"
                   style={{
-                    color: "rgba(196, 43, 16, 1)",
+                    color: "rgba(255, 255, 255, 1)",
                     textShadow: "4px 4px 0 #000, 6px 6px 0 #000, 0 4px 0 #000, -2px -2px 0 #000, -2px 2px 0 #000, 2px -2px 0 #000, 2px 2px 0 #000"
                   }}
                 >
