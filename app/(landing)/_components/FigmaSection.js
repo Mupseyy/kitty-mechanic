@@ -74,8 +74,8 @@ const FigmaSection = () => {
 
           {/* Navigation Header */}
           <div className="font-normal relative z-20 pointer-events-auto">
-            <div className="font-normal max-w-6xl w-full pointer-events-auto mx-auto px-4 sm:px-6 pt-[49px] pb-6">
-              <div className="flex flex-col lg:flex-row items-center font-normal gap-4 lg:gap-8 justify-between pointer-events-auto">
+            <div className="font-normal max-w-6xl w-full pointer-events-auto mx-auto pl-6 pr-[163px] pt-[49px] pb-6">
+              <div className="flex flex-col lg:flex-row items-center font-normal justify-between pointer-events-auto">
                 <div className="flex items-center font-normal gap-3 sm:gap-4 pointer-events-auto">
                   <img
                     src="https://api.builder.io/api/v1/image/assets/TEMP/8dc1293a36ff825d9439d5380f5d3d7d44c17d0e?width=150"
@@ -95,7 +95,7 @@ const FigmaSection = () => {
                 </div>
 
                 {/* Navigation Menu */}
-                <div className="flex items-center bg-[#DDD6CC] font-normal justify-center lg:justify-end pointer-events-auto p-2 sm:p-3 rounded">
+                <div className="flex items-center bg-[#DDD6CC] font-normal justify-center pointer-events-auto overflow-hidden ml-[95px] mr-[-2px] px-[18px] py-3 rounded-[40px]">
                   <a
                     href="#about"
                     className="text-black transition-colors font-luckiest-guy text-[16px] sm:text-[20px] lg:text-[22px] font-normal leading-[20px] sm:leading-[28px] px-2 sm:px-4 lg:px-6 py-2 sm:py-3"
@@ -132,7 +132,7 @@ const FigmaSection = () => {
               <div className="flex justify-center mb-8">
                 <img
                   loading="lazy"
-                  srcSet="https://cdn.builder.io/api/v1/image/assets%2F948aca18f17d4257a45a8b934c327059%2F3caf32f348e24444a71594fb801dd05e?width=100 100w, https://cdn.builder.io/api/v1/image/assets%2F948aca18f17d4257a45a8b934c327059%2F3caf32f348e24444a71594fb801dd05e?width=200 200w, https://cdn.builder.io/api/v1/image/assets%2F948aca18f17d4257a45a8b934c327059%2F3caf32f348e24444a71594fb801dd05e?width=400 400w, https://cdn.builder.io/api/v1/image/assets%2F948aca18f17d4257a45a8b934c327059%2F3caf32f348e24444a71594fb801dd05e?width=800 800w, https://cdn.builder.io/api/v1/image/assets%2F948aca18f17d4257a45a8b934c327059%2F3caf32f348e24444a71594fb801dd05e?width=1200 1200w, https://cdn.builder.io/api/v1/image/assets%2F948aca18f17d4257a45a8b934c327059%2F3caf32f348e24444a71594fb801dd05e?width=1600 1600w, https://cdn.builder.io/api/v1/image/assets%2F948aca18f17d4257a45a8b934c327059%2F3caf32f348e24444a71594fb801dd05e?width=2000 2000w, https://cdn.builder.io/api/v1/image/assets%2F948aca18f17d4257a45a8b934c327059%2F3caf32f348e24444a71594fb801dd05e"
+                  src="https://cdn.builder.io/api/v1/image/assets%2F6e8fa0e4f9974b6bbde244f74d2d30d6%2Fb42765756e794bc4aebd8c8515a3dad4"
                   className="aspect-square object-cover object-center w-full min-h-[200px] sm:min-h-[280px] min-w-5 overflow-hidden max-w-[200px] sm:max-w-[280px]"
                   alt="Kitty Character"
                 />
