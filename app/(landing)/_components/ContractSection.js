@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef } from "react";
-import { contractAddress } from "../../constants";
+import { contractAddress } from "../../../constants";
 
 const ContractSection = () => {
   const [copied, setCopied] = useState(false);
