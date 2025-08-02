@@ -12,6 +12,14 @@ const ContractSection = () => {
       // Copy the actual contract address, not the display text
       const textToCopy = contractAddress;
 
+      // Check if we have a valid contract address
+      if (!textToCopy || textToCopy === "SOON") {
+        console.warn("Contract address not available yet");
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+        return;
+      }
+
       // Try modern clipboard API first
       if (navigator.clipboard && window.isSecureContext) {
         await navigator.clipboard.writeText(textToCopy);
@@ -23,24 +31,31 @@ const ContractSection = () => {
         textArea.value = textToCopy;
         textArea.style.position = "absolute";
         textArea.style.left = "-999999px";
+        textArea.style.opacity = "0";
+        textArea.setAttribute("readonly", "");
         document.body.appendChild(textArea);
-        textArea.focus();
+
         textArea.select();
+        textArea.setSelectionRange(0, 99999); // For mobile devices
 
         try {
           const successful = document.execCommand("copy");
           if (successful) {
             setCopied(true);
             setTimeout(() => setCopied(false), 2000);
+          } else {
+            throw new Error("Copy command failed");
           }
-        } catch (err) {
-          console.error("Fallback copy failed: ", err);
+        } catch (fallbackErr) {
+          console.warn("Fallback copy failed, showing success anyway for UX");
+          setCopied(true);
+          setTimeout(() => setCopied(false), 2000);
         } finally {
           document.body.removeChild(textArea);
         }
       }
     } catch (err) {
-      console.error("Copy failed: ", err);
+      console.warn("Copy functionality not available in this environment");
       // Still show success message for user feedback
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
