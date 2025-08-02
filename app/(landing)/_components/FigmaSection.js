@@ -133,20 +133,34 @@ const FigmaSection = () => {
                 <img
                   loading="lazy"
                   src="https://cdn.builder.io/api/v1/image/assets%2F6e8fa0e4f9974b6bbde244f74d2d30d6%2Fb42765756e794bc4aebd8c8515a3dad4"
-                  className="aspect-square object-cover object-center w-full min-h-[200px] sm:min-h-[280px] min-w-5 overflow-hidden max-w-[200px] sm:max-w-[280px]"
+                  className="aspect-square object-cover object-center w-full min-h-[200px] sm:min-h-[260px] min-w-5 overflow-hidden max-w-[200px] sm:max-w-[280px] sm:mb-[72px] sm:mt-[-4px]"
                   alt="Kitty Character"
                 />
               </div>
 
+              {/* KITTY THE MECHANIC text */}
+              <div className="relative sm:mt-[-70px] h-auto pb-[35px]">
+                <p>
+                  <span
+                    className="text-white font-luckiest-guy text-[45px]"
+                    style={{
+                      fontFamily: '"Luckiest Guy", "Luckiest Guy Fallback", "Luckiest Guy", -apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif'
+                    }}
+                  >
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;KITTY THE MECHANIC
+                  </span>
+                </p>
+              </div>
+
               {/* Social Media Icons - Mobile Responsive Layout */}
-              <div className="flex flex-col items-center gap-6 mb-8">
-                <div className="flex justify-center gap-4 sm:gap-6">
+              <div className="flex flex-col items-center gap-6 sm:mt-[-2px] sm:mb-[14px] mb-8">
+                <div className="flex justify-center gap-6">
                   {/* X/Twitter */}
                   <a
                     href="https://x.com/kittymechanic_"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center bg-black rounded justify-center w-10 h-10 sm:w-12 sm:h-12 transform rotate-[5deg] transition-transform duration-200 hover:rotate-0 hover:scale-110"
+                    className="flex items-center bg-black rounded justify-center w-12 h-12 transform rotate-[5deg] transition-transform duration-200 hover:rotate-0 hover:scale-110"
                   >
                     <img
                       src="https://api.builder.io/api/v1/image/assets/TEMP/fca1ff3bff81e76122bc0ca0fe98d9355ccb6f45?width=88"
