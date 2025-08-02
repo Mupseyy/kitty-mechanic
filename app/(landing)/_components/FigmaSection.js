@@ -139,17 +139,16 @@ const FigmaSection = () => {
               </div>
 
               {/* KITTY THE MECHANIC text */}
-              <div className="relative sm:mt-[-70px] h-auto pb-[35px]">
-                <p>
-                  <span
-                    className="text-white font-luckiest-guy text-[45px]"
-                    style={{
-                      fontFamily: '"Luckiest Guy", "Luckiest Guy Fallback", "Luckiest Guy", -apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif'
-                    }}
-                  >
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;KITTY THE MECHANIC
-                  </span>
-                </p>
+              <div className="relative sm:mt-[-70px] h-auto pb-[35px] text-center">
+                <h2
+                  className="font-luckiest-guy text-[50px] font-normal leading-tight"
+                  style={{
+                    color: "rgba(196, 43, 16, 1)",
+                    textShadow: "4px 4px 0 #000, 6px 6px 0 #000, 0 4px 0 #000, -2px -2px 0 #000, -2px 2px 0 #000, 2px -2px 0 #000, 2px 2px 0 #000"
+                  }}
+                >
+                  KITTY THE MECHANIC
+                </h2>
               </div>
 
               {/* Social Media Icons - Mobile Responsive Layout */}
