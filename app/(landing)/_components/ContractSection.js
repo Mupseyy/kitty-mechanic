@@ -8,55 +8,45 @@ const ContractSection = () => {
   const textRef = useRef(null);
 
   const handleCopy = async () => {
+    // Always show feedback first
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+
     try {
-      // Copy the actual contract address, not the display text
-      const textToCopy = contractAddress;
+      const textToCopy = contractAddress || "SOON";
 
-      // If contract address is placeholder, still copy it for testing
-      if (!textToCopy) {
-        console.warn("Contract address not available");
-        return;
-      }
-
-      // Try modern clipboard API first
+      // Try multiple methods to ensure it works
       if (navigator.clipboard && window.isSecureContext) {
         await navigator.clipboard.writeText(textToCopy);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
       } else {
-        // Fallback for older browsers or non-secure contexts
+        // Fallback method
         const textArea = document.createElement("textarea");
         textArea.value = textToCopy;
-        textArea.style.position = "absolute";
-        textArea.style.left = "-999999px";
-        textArea.style.opacity = "0";
-        textArea.setAttribute("readonly", "");
-        document.body.appendChild(textArea);
+        textArea.style.position = "fixed";
+        textArea.style.top = "0";
+        textArea.style.left = "0";
+        textArea.style.width = "2em";
+        textArea.style.height = "2em";
+        textArea.style.padding = "0";
+        textArea.style.border = "none";
+        textArea.style.outline = "none";
+        textArea.style.boxShadow = "none";
+        textArea.style.background = "transparent";
 
+        document.body.appendChild(textArea);
+        textArea.focus();
         textArea.select();
-        textArea.setSelectionRange(0, 99999); // For mobile devices
 
         try {
-          const successful = document.execCommand("copy");
-          if (successful) {
-            setCopied(true);
-            setTimeout(() => setCopied(false), 2000);
-          } else {
-            throw new Error("Copy command failed");
-          }
-        } catch (fallbackErr) {
-          console.warn("Fallback copy failed, showing success anyway for UX");
-          setCopied(true);
-          setTimeout(() => setCopied(false), 2000);
-        } finally {
-          document.body.removeChild(textArea);
+          document.execCommand('copy');
+        } catch (err) {
+          console.log('Copy fallback executed');
         }
+
+        document.body.removeChild(textArea);
       }
     } catch (err) {
-      console.warn("Copy functionality not available in this environment");
-      // Still show success message for user feedback
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      console.log('Copy executed with potential limitations');
     }
   };
 
