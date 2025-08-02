@@ -133,21 +133,9 @@ const FigmaSection = () => {
                 <img
                   loading="lazy"
                   src="https://cdn.builder.io/api/v1/image/assets%2F6e8fa0e4f9974b6bbde244f74d2d30d6%2Fb42765756e794bc4aebd8c8515a3dad4"
-                  className="aspect-square object-cover object-center w-full min-h-[200px] sm:min-h-[280px] min-w-5 overflow-hidden max-w-[200px] sm:max-w-[280px] sm:mt-0 mt-[45px]"
+                  className="aspect-square object-cover object-center w-full min-h-[200px] sm:min-h-[280px] min-w-5 overflow-hidden max-w-[200px] sm:max-w-[280px]"
                   alt="Kitty Character"
                 />
-              </div>
-
-              {/* KITTY themechanic text */}
-              <div className="relative ml-5 h-auto sm:text-[35px] text-[3px] sm:mt-0 mt-[-4px]">
-                <span
-                  className="text-white font-luckiest-guy text-[35px] sm:text-[35px]"
-                  style={{
-                    fontFamily: '"Luckiest Guy", "Luckiest Guy Fallback", "Luckiest Guy", -apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif'
-                  }}
-                >
-                  KITTY thmechanic
-                </span>
               </div>
 
               {/* Social Media Icons - Mobile Responsive Layout */}
