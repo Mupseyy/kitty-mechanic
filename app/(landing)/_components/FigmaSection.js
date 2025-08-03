@@ -1,8 +1,18 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
 const FigmaSection = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+  };
+
   return (
     <div className="pointer-events-auto text-gray-200 bg-gray-900 font-sans">
       {/* Empty header space */}
@@ -76,7 +86,7 @@ const FigmaSection = () => {
           <div className="font-normal relative z-20 pointer-events-auto">
             <div className="font-normal max-w-6xl w-full pointer-events-auto mx-auto pl-6 sm:pr-[163px] pr-[44px] pt-[49px] pb-6">
               <div className="flex flex-col lg:flex-row items-center font-normal justify-between pointer-events-auto">
-                <div className="flex items-center font-normal gap-3 sm:gap-4 pointer-events-auto">
+                <div className="flex items-center font-normal gap-3 sm:gap-4 pointer-events-auto relative">
                   <img
                     src="https://api.builder.io/api/v1/image/assets/TEMP/8dc1293a36ff825d9439d5380f5d3d7d44c17d0e?width=150"
                     alt="Kitty Logo"
@@ -92,6 +102,19 @@ const FigmaSection = () => {
                   >
                     KITTY
                   </h1>
+
+                  {/* Mobile Menu Button - 3 dots */}
+                  <button
+                    className="lg:hidden ml-4 p-2 rounded-full hover:bg-white hover:bg-opacity-20 transition-colors"
+                    onClick={toggleMobileMenu}
+                    aria-label="Open mobile menu"
+                  >
+                    <div className="flex flex-col space-y-1">
+                      <div className="w-1 h-1 bg-white rounded-full"></div>
+                      <div className="w-1 h-1 bg-white rounded-full"></div>
+                      <div className="w-1 h-1 bg-white rounded-full"></div>
+                    </div>
+                  </button>
                 </div>
 
                 {/* Navigation Menu - Hidden on mobile */}
@@ -123,6 +146,44 @@ const FigmaSection = () => {
                 </div>
               </div>
             </div>
+
+            {/* Mobile Menu Overlay */}
+            {mobileMenuOpen && (
+              <div className="lg:hidden fixed inset-0 z-50 bg-black bg-opacity-50" onClick={closeMobileMenu}>
+                <div className="absolute top-20 right-4 bg-[#DDD6CC] rounded-lg shadow-lg border-2 border-black p-4 min-w-[200px]">
+                  <div className="flex flex-col space-y-3">
+                    <a
+                      href="#about"
+                      className="text-black transition-colors font-luckiest-guy text-lg font-normal px-4 py-2 hover:bg-black hover:text-white rounded"
+                      onClick={closeMobileMenu}
+                    >
+                      ABOUT
+                    </a>
+                    <a
+                      href="#contract"
+                      className="text-black transition-colors font-luckiest-guy text-lg font-normal px-4 py-2 hover:bg-black hover:text-white rounded"
+                      onClick={closeMobileMenu}
+                    >
+                      CONTRACT
+                    </a>
+                    <a
+                      href="#tokenomics"
+                      className="text-black transition-colors font-luckiest-guy text-lg font-normal px-4 py-2 hover:bg-black hover:text-white rounded"
+                      onClick={closeMobileMenu}
+                    >
+                      TOKENOMICS
+                    </a>
+                    <a
+                      href="#buy"
+                      className="text-black transition-colors font-luckiest-guy text-lg font-normal px-4 py-2 hover:bg-black hover:text-white rounded"
+                      onClick={closeMobileMenu}
+                    >
+                      HOW TO BUY
+                    </a>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Main Content Area */}
