@@ -133,7 +133,7 @@ const FigmaSection = () => {
                 <img
                   loading="lazy"
                   src="https://cdn.builder.io/api/v1/image/assets%2F6e8fa0e4f9974b6bbde244f74d2d30d6%2Fb42765756e794bc4aebd8c8515a3dad4"
-                  className="aspect-square object-cover object-center w-full min-h-[200px] sm:min-h-[260px] min-w-5 overflow-hidden max-w-[200px] sm:max-w-[280px] sm:mb-[72px] sm:mt-[-4px]"
+                  className="aspect-square object-cover object-center w-full min-h-[200px] sm:min-h-[260px] min-w-5 overflow-hidden max-w-[200px] sm:max-w-[280px] sm:mb-[72px] sm:mt-[-4px] mt-[91px]"
                   alt="Kitty Character"
                 />
               </div>
