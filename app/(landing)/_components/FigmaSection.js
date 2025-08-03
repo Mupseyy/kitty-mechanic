@@ -103,16 +103,16 @@ const FigmaSection = () => {
                     KITTY
                   </h1>
 
-                  {/* Mobile Menu Button - 3 dots */}
+                  {/* Mobile Menu Button - Hamburger */}
                   <button
-                    className="lg:hidden ml-4 p-2 rounded-full hover:bg-white hover:bg-opacity-20 transition-colors"
+                    className="lg:hidden ml-4 p-2 rounded-lg hover:bg-white hover:bg-opacity-20 transition-colors"
                     onClick={toggleMobileMenu}
                     aria-label="Open mobile menu"
                   >
                     <div className="flex flex-col space-y-1">
-                      <div className="w-1 h-1 bg-white rounded-full"></div>
-                      <div className="w-1 h-1 bg-white rounded-full"></div>
-                      <div className="w-1 h-1 bg-white rounded-full"></div>
+                      <div className="w-6 h-0.5 bg-white rounded"></div>
+                      <div className="w-6 h-0.5 bg-white rounded"></div>
+                      <div className="w-6 h-0.5 bg-white rounded"></div>
                     </div>
                   </button>
                 </div>
