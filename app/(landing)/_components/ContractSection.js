@@ -123,9 +123,8 @@ const ContractSection = () => {
                     <p className="text-green-600 font-semibold">Text Copied!</p>
                   ) : (
                     <p>
-                      <span className="sm:text-[inherit] text-[18px]">CA</span>
-                      <span className="sm:text-[18px] text-[14px]">
-                        <p>CA: SOON</p>
+                      <span className="font-normal">
+                        CA: SOON
                       </span>
                     </p>
                   )}
