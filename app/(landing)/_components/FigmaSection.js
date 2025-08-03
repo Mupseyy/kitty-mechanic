@@ -86,7 +86,7 @@ const FigmaSection = () => {
           <div className="font-normal relative z-20 pointer-events-auto">
             <div className="font-normal max-w-6xl w-full pointer-events-auto mx-auto pl-6 sm:pr-[163px] pr-[44px] pt-[49px] pb-6">
               <div className="flex flex-col lg:flex-row items-center font-normal justify-between pointer-events-auto">
-                <div className="flex items-center font-normal gap-3 sm:gap-4 pointer-events-auto relative">
+                <div className="flex items-center font-normal gap-3 sm:gap-4 pointer-events-auto relative sm:justify-start sm:ml-0 sm:pr-0 sm:pt-0 justify-start ml-auto pr-[10px] pt-[3px]">
                   <img
                     src="https://api.builder.io/api/v1/image/assets/TEMP/8dc1293a36ff825d9439d5380f5d3d7d44c17d0e?width=150"
                     alt="Kitty Logo"
@@ -194,7 +194,7 @@ const FigmaSection = () => {
                 <img
                   loading="lazy"
                   src="https://cdn.builder.io/api/v1/image/assets%2F6e8fa0e4f9974b6bbde244f74d2d30d6%2Fb42765756e794bc4aebd8c8515a3dad4"
-                  className="aspect-square object-cover object-center w-full min-h-[200px] sm:min-h-[260px] min-w-5 overflow-hidden max-w-[200px] sm:max-w-[280px] sm:mb-[72px] sm:mt-[-4px] mt-[91px]"
+                  className="aspect-square object-cover object-center w-full min-h-[200px] sm:min-h-[260px] min-w-5 overflow-hidden max-w-[200px] sm:max-w-[280px] sm:mb-[72px] sm:mt-[-4px] mt-[88px]"
                   alt="Kitty Character"
                 />
               </div>
