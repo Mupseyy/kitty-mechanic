@@ -1,48 +1,82 @@
 "use client";
 
 import React, { useState, useRef } from "react";
+import { contractAddress } from "../../../constants";
 
 const ContractSection = () => {
   const [copied, setCopied] = useState(false);
   const textRef = useRef(null);
 
   const handleCopy = async () => {
-    try {
-      // Get the actual text content from the displayed element
-      const textToCopy = textRef.current
-        ? textRef.current.innerText || textRef.current.textContent
-        : "CA:";
+    const textToCopy = contractAddress || "SOON";
 
-      // Try modern clipboard API first
-      if (navigator.clipboard && window.isSecureContext) {
+    // Method 1: Try all possible copy methods immediately
+    let copySuccess = false;
+
+    // Modern clipboard API
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
         await navigator.clipboard.writeText(textToCopy);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
-      } else {
-        // Fallback for older browsers or non-secure contexts
+        copySuccess = true;
+      }
+    } catch (err) {
+      // Continue to fallback
+    }
+
+    // Fallback 1: execCommand with textarea
+    if (!copySuccess) {
+      try {
         const textArea = document.createElement("textarea");
         textArea.value = textToCopy;
-        textArea.style.position = "absolute";
-        textArea.style.left = "-999999px";
+        textArea.style.position = "fixed";
+        textArea.style.left = "0";
+        textArea.style.top = "0";
+        textArea.style.opacity = "1";
+        textArea.style.zIndex = "9999";
         document.body.appendChild(textArea);
         textArea.focus();
         textArea.select();
+        textArea.setSelectionRange(0, textToCopy.length);
 
-        try {
-          const successful = document.execCommand("copy");
-          if (successful) {
-            setCopied(true);
-            setTimeout(() => setCopied(false), 2000);
-          }
-        } catch (err) {
-          console.error("Fallback copy failed: ", err);
-        } finally {
-          document.body.removeChild(textArea);
-        }
+        copySuccess = document.execCommand("copy");
+        document.body.removeChild(textArea);
+      } catch (err) {
+        // Continue to next fallback
       }
-    } catch (err) {
-      console.error("Copy failed: ", err);
-      // Still show success message for user feedback
+    }
+
+    // Fallback 2: Create input element
+    if (!copySuccess) {
+      try {
+        const input = document.createElement("input");
+        input.value = textToCopy;
+        input.style.position = "fixed";
+        input.style.opacity = "0";
+        input.style.left = "0";
+        input.style.top = "0";
+        document.body.appendChild(input);
+        input.select();
+        input.setSelectionRange(0, textToCopy.length);
+
+        copySuccess = document.execCommand("copy");
+        document.body.removeChild(input);
+      } catch (err) {
+        // Continue to final fallback
+      }
+    }
+
+    // Final fallback: Manual copy via prompt
+    if (!copySuccess) {
+      // Create a modal-like prompt for manual copy
+      const userPrompt = prompt(
+        "Copy this contract address (Ctrl+C):",
+        textToCopy,
+      );
+      copySuccess = true; // Assume user copied it
+    }
+
+    // Show success feedback
+    if (copySuccess) {
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     }
@@ -76,7 +110,7 @@ const ContractSection = () => {
         <div className="w-full max-w-2xl">
           <div className="relative flex justify-center items-center">
             <div
-              className="flex w-full max-w-xl h-16 px-4 py-2 justify-center items-center rounded-full border-4 border-black bg-white bg-opacity-90 shadow-[6px_6px_0_0_#000] backdrop-blur-sm cursor-pointer hover:bg-opacity-100 hover:shadow-[8px_8px_0_0_#000] hover:scale-105 transition-all duration-200 active:scale-95 sm:w-full w-[200%]"
+              className="flex w-full max-w-xl h-16 px-4 py-2 sm:pl-4 pl-[11px] justify-center items-center rounded-full border-4 border-black bg-white bg-opacity-90 shadow-[6px_6px_0_0_#000] backdrop-blur-sm cursor-pointer hover:bg-opacity-100 hover:shadow-[8px_8px_0_0_#000] hover:scale-105 transition-all duration-200 active:scale-95 sm:w-full w-[250%]"
               onClick={handleCopy}
               title="Click to copy contract address"
             >
@@ -89,7 +123,9 @@ const ContractSection = () => {
                     <p className="text-green-600 font-semibold">Text Copied!</p>
                   ) : (
                     <p>
-                      <span className="sm:text-[inherit] text-[18px]">CA</span><span style={{ fontSize: "18px" }}>: SOON</span>
+                      <span className="font-normal">
+                        <p>CA: ???</p>
+                      </span>
                     </p>
                   )}
                 </span>

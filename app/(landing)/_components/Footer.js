@@ -18,7 +18,7 @@ const Footer = () => {
           </p>
         </div>
       </div>
-      <div className="overflow-hidden relative h-24">
+      <div className="overflow-hidden relative h-24 sm:h-24 h-[43px]">
         <img
           loading="lazy"
           src="https://cdn.builder.io/api/v1/image/assets%2Fa0b33e0886874f46b6cddb65ebb255c5%2F46a180fbed1545c9ac2a6ec790398a7d"

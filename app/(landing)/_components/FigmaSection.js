@@ -1,8 +1,18 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 
 const FigmaSection = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false);
+  };
+
   return (
     <div className="pointer-events-auto text-gray-200 bg-gray-900 font-sans">
       {/* Empty header space */}
@@ -74,9 +84,9 @@ const FigmaSection = () => {
 
           {/* Navigation Header */}
           <div className="font-normal relative z-20 pointer-events-auto">
-            <div className="font-normal max-w-6xl w-full pointer-events-auto mx-auto px-4 sm:px-6 pt-[49px] pb-6">
-              <div className="flex flex-col lg:flex-row items-center font-normal gap-4 lg:gap-8 justify-between pointer-events-auto">
-                <div className="flex items-center font-normal gap-3 sm:gap-4 pointer-events-auto">
+            <div className="font-normal max-w-6xl w-full pointer-events-auto mx-auto pl-6 sm:pr-[163px] pr-[44px] pt-[49px] pb-6 sm:flex-row sm:flex-initial flex flex-col">
+              <div className="flex flex-col lg:flex-row items-center font-normal justify-between pointer-events-auto sm:mx-0 mx-auto">
+                <div className="flex items-center font-normal gap-3 sm:gap-4 pointer-events-auto relative sm:justify-start sm:ml-0 sm:pr-0 sm:pt-0 justify-start ml-auto pr-[10px] pt-[3px]">
                   <img
                     src="https://api.builder.io/api/v1/image/assets/TEMP/8dc1293a36ff825d9439d5380f5d3d7d44c17d0e?width=150"
                     alt="Kitty Logo"
@@ -92,10 +102,23 @@ const FigmaSection = () => {
                   >
                     KITTY
                   </h1>
+
+                  {/* Mobile Menu Button - Hamburger */}
+                  <button
+                    className="lg:hidden ml-4 p-2 rounded-lg hover:bg-white hover:bg-opacity-20 transition-colors"
+                    onClick={toggleMobileMenu}
+                    aria-label="Open mobile menu"
+                  >
+                    <div className="flex flex-col space-y-1">
+                      <div className="w-6 h-0.5 bg-white rounded"></div>
+                      <div className="w-6 h-0.5 bg-white rounded"></div>
+                      <div className="w-6 h-0.5 bg-white rounded"></div>
+                    </div>
+                  </button>
                 </div>
 
-                {/* Navigation Menu */}
-                <div className="flex items-center bg-[#DDD6CC] font-normal justify-center lg:justify-end pointer-events-auto p-2 sm:p-3 rounded">
+                {/* Navigation Menu - Hidden on mobile */}
+                <div className="hidden lg:flex items-center bg-[#DDD6CC] font-normal justify-center pointer-events-auto overflow-hidden ml-[95px] mr-[-2px] px-[18px] py-3 rounded-[40px]">
                   <a
                     href="#about"
                     className="text-black transition-colors font-luckiest-guy text-[16px] sm:text-[20px] lg:text-[22px] font-normal leading-[20px] sm:leading-[28px] px-2 sm:px-4 lg:px-6 py-2 sm:py-3"
@@ -123,30 +146,85 @@ const FigmaSection = () => {
                 </div>
               </div>
             </div>
+
+            {/* Mobile Menu Overlay */}
+            {mobileMenuOpen && (
+              <div
+                className="lg:hidden fixed inset-0 z-50 bg-black bg-opacity-50"
+                onClick={closeMobileMenu}
+              >
+                <div className="absolute top-20 right-4 bg-[#DDD6CC] rounded-lg shadow-lg border-2 border-black p-4 min-w-[200px]">
+                  <div className="flex flex-col space-y-3">
+                    <a
+                      href="#about"
+                      className="text-black transition-colors font-luckiest-guy text-lg font-normal px-4 py-2 hover:bg-black hover:text-white rounded"
+                      onClick={closeMobileMenu}
+                    >
+                      ABOUT
+                    </a>
+                    <a
+                      href="#contract"
+                      className="text-black transition-colors font-luckiest-guy text-lg font-normal px-4 py-2 hover:bg-black hover:text-white rounded"
+                      onClick={closeMobileMenu}
+                    >
+                      CONTRACT
+                    </a>
+                    <a
+                      href="#tokenomics"
+                      className="text-black transition-colors font-luckiest-guy text-lg font-normal px-4 py-2 hover:bg-black hover:text-white rounded"
+                      onClick={closeMobileMenu}
+                    >
+                      TOKENOMICS
+                    </a>
+                    <a
+                      href="#buy"
+                      className="text-black transition-colors font-luckiest-guy text-lg font-normal px-4 py-2 hover:bg-black hover:text-white rounded"
+                      onClick={closeMobileMenu}
+                    >
+                      HOW TO BUY
+                    </a>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Main Content Area */}
-          <div className="flex items-center flex-grow font-normal justify-center relative z-10 pointer-events-auto px-4 sm:px-6">
-            <div className="font-normal max-w-4xl w-full pointer-events-auto flex flex-col mx-auto">
+          <div className="flex items-center flex-grow font-normal justify-center relative z-10 pointer-events-auto px-4 sm:px-6 sm:pb-0 pb-[100px] sm:mb-0 mb-[45px]">
+            <div className="font-normal sm:max-w-4xl max-w-[856px] w-full pointer-events-auto flex flex-col mx-auto">
               {/* Central Image */}
-              <div className="flex justify-center mb-8">
+              <div className="flex justify-center mb-8 sm:mt-0 mt-[95px]">
                 <img
                   loading="lazy"
-                  srcSet="https://cdn.builder.io/api/v1/image/assets%2F948aca18f17d4257a45a8b934c327059%2F3caf32f348e24444a71594fb801dd05e?width=100 100w, https://cdn.builder.io/api/v1/image/assets%2F948aca18f17d4257a45a8b934c327059%2F3caf32f348e24444a71594fb801dd05e?width=200 200w, https://cdn.builder.io/api/v1/image/assets%2F948aca18f17d4257a45a8b934c327059%2F3caf32f348e24444a71594fb801dd05e?width=400 400w, https://cdn.builder.io/api/v1/image/assets%2F948aca18f17d4257a45a8b934c327059%2F3caf32f348e24444a71594fb801dd05e?width=800 800w, https://cdn.builder.io/api/v1/image/assets%2F948aca18f17d4257a45a8b934c327059%2F3caf32f348e24444a71594fb801dd05e?width=1200 1200w, https://cdn.builder.io/api/v1/image/assets%2F948aca18f17d4257a45a8b934c327059%2F3caf32f348e24444a71594fb801dd05e?width=1600 1600w, https://cdn.builder.io/api/v1/image/assets%2F948aca18f17d4257a45a8b934c327059%2F3caf32f348e24444a71594fb801dd05e?width=2000 2000w, https://cdn.builder.io/api/v1/image/assets%2F948aca18f17d4257a45a8b934c327059%2F3caf32f348e24444a71594fb801dd05e"
-                  className="aspect-square object-cover object-center w-full min-h-[200px] sm:min-h-[280px] min-w-5 overflow-hidden max-w-[200px] sm:max-w-[280px]"
+                  src="https://cdn.builder.io/api/v1/image/assets%2F6e8fa0e4f9974b6bbde244f74d2d30d6%2Fb42765756e794bc4aebd8c8515a3dad4"
+                  className="aspect-square object-cover object-center w-full min-h-[200px] sm:min-h-[260px] min-w-5 overflow-hidden max-w-[200px] sm:max-w-[280px] sm:mb-[72px] sm:mt-[-4px] mt-[88px]"
                   alt="Kitty Character"
                 />
               </div>
 
+              {/* KITTY THE MECHANIC text */}
+              <div className="relative sm:mt-[-70px] h-auto pb-[35px] text-center">
+                <h2
+                  className="font-luckiest-guy text-[50px] font-normal leading-tight"
+                  style={{
+                    color: "rgba(255, 255, 255, 1)",
+                    textShadow:
+                      "4px 4px 0 #000, 6px 6px 0 #000, 0 4px 0 #000, -2px -2px 0 #000, -2px 2px 0 #000, 2px -2px 0 #000, 2px 2px 0 #000",
+                  }}
+                >
+                  KITTY THE MECHANIC
+                </h2>
+              </div>
+
               {/* Social Media Icons - Mobile Responsive Layout */}
-              <div className="flex flex-col items-center gap-6 mb-8">
-                <div className="flex justify-center gap-4 sm:gap-6">
+              <div className="flex flex-col items-center gap-6 sm:mt-[-2px] sm:mb-[14px] mb-8">
+                <div className="flex justify-center gap-6">
                   {/* X/Twitter */}
                   <a
                     href="https://x.com/kittymechanic_"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center bg-black rounded justify-center w-10 h-10 sm:w-12 sm:h-12 transform rotate-[5deg] transition-transform duration-200 hover:rotate-0 hover:scale-110"
+                    className="flex items-center bg-black rounded justify-center w-12 h-12 transform rotate-[5deg] transition-transform duration-200 hover:rotate-0 hover:scale-110"
                   >
                     <img
                       src="https://api.builder.io/api/v1/image/assets/TEMP/fca1ff3bff81e76122bc0ca0fe98d9355ccb6f45?width=88"
