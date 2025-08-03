@@ -84,8 +84,8 @@ const FigmaSection = () => {
 
           {/* Navigation Header */}
           <div className="font-normal relative z-20 pointer-events-auto">
-            <div className="font-normal max-w-6xl w-full pointer-events-auto mx-auto pl-6 sm:pr-[163px] pr-[44px] pt-[49px] pb-6">
-              <div className="flex flex-col lg:flex-row items-center font-normal justify-between pointer-events-auto">
+            <div className="font-normal max-w-6xl w-full pointer-events-auto mx-auto pl-6 sm:pr-[163px] pr-[44px] pt-[49px] pb-6 sm:flex-row sm:flex-initial flex flex-col">
+              <div className="flex flex-col lg:flex-row items-center font-normal justify-between pointer-events-auto sm:mx-0 mx-auto">
                 <div className="flex items-center font-normal gap-3 sm:gap-4 pointer-events-auto relative sm:justify-start sm:ml-0 sm:pr-0 sm:pt-0 justify-start ml-auto pr-[10px] pt-[3px]">
                   <img
                     src="https://api.builder.io/api/v1/image/assets/TEMP/8dc1293a36ff825d9439d5380f5d3d7d44c17d0e?width=150"
