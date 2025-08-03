@@ -129,7 +129,7 @@ const FigmaSection = () => {
           <div className="flex items-center flex-grow font-normal justify-center relative z-10 pointer-events-auto px-4 sm:px-6 sm:pb-0 pb-[100px] sm:mb-0 mb-[45px]">
             <div className="font-normal sm:max-w-4xl max-w-[856px] w-full pointer-events-auto flex flex-col mx-auto">
               {/* Central Image */}
-              <div className="flex justify-center mb-8">
+              <div className="flex justify-center mb-8 sm:mt-0 mt-[95px]">
                 <img
                   loading="lazy"
                   src="https://cdn.builder.io/api/v1/image/assets%2F6e8fa0e4f9974b6bbde244f74d2d30d6%2Fb42765756e794bc4aebd8c8515a3dad4"
