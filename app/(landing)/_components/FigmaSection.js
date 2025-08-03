@@ -149,7 +149,10 @@ const FigmaSection = () => {
 
             {/* Mobile Menu Overlay */}
             {mobileMenuOpen && (
-              <div className="lg:hidden fixed inset-0 z-50 bg-black bg-opacity-50" onClick={closeMobileMenu}>
+              <div
+                className="lg:hidden fixed inset-0 z-50 bg-black bg-opacity-50"
+                onClick={closeMobileMenu}
+              >
                 <div className="absolute top-20 right-4 bg-[#DDD6CC] rounded-lg shadow-lg border-2 border-black p-4 min-w-[200px]">
                   <div className="flex flex-col space-y-3">
                     <a
