@@ -124,7 +124,7 @@ const ContractSection = () => {
                   ) : (
                     <p>
                       <span className="font-normal">
-                        <p>CA: SOON</p>
+                        <p>CA: ???</p>
                       </span>
                     </p>
                   )}
